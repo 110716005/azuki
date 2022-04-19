@@ -4,4 +4,5 @@ module.exports = {
   images :{
     domains: ["www.azuki.com"],
   }
+  
 }

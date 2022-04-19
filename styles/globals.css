@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-    font-family: SB,MBP,Helvetica Neue,Helvetica,Arial,sans;
+    font-family: SB, MBP, Helvetica Neue, Helvetica, Arial, sans;
     line-height: 1.15;
     -webkit-text-size-adjust: 100%;
 }
@@ -17,69 +17,149 @@ html {
     transition: all 1s ease;
 }
 
-.icon > span {
+.icon>span {
     width: 3px;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
     transform-origin: bottom;
     border-radius: 1px;
-    margin: 0  1.5px;
+    margin: 0 1.5px;
     content: "";
     margin-top: auto !important;
 }
 
-.icon > span:nth-child(2) {
+.icon>span:nth-child(2) {
     animation-delay: -2.2s;
 }
-.icon > span:nth-child(3) {
+
+.icon>span:nth-child(3) {
     animation-delay: -3.7s;
 }
 
-.pausedicon > span{
+.pausedicon>span {
     transform: scaleY(0.05);
 }
 
-.playingicon > span{
+.playingicon>span {
     animation: bounce 2.2s ease infinite alternate;
     transform: scaleY(1);
-    background-color: #cd2644!important;
+    background-color: #cd2644 !important;
 }
 
 @keyframes bounce {
-    0% { height: 10%; }
-    4% { height: 12%; }
-    8% { height: 14%; }
-    12% { height: 29%; }
-    16% { height: 37%; }
-    20% { height: 25%; }
-    24% { height: 44%; }
-    28% { height: 63%; }
-    32% { height: 58%; }
-    36% { height: 41%; }
-    40% { height: 80%; }
-    44% { height: 100%; }
-    48% { height: 30%; }
-    52% { height: 50%; }
-    56% { height: 70%; }
-    60% { height: 60%; }
-    64% { height: 50%; }
-    68% { height: 32%; }
-    72% { height: 58%; }
-    76% { height: 14%; }
-    80% { height: 36%; }
-    84% { height: 74%; }
-    88% { height: 85%; }
-    92% { height: 52%; }
-    96% { height: 20%; }
-    100% { height: 35%; }
-  }
+    0% {
+        height: 10%;
+    }
 
-.single-small .single-small, .single-small .single-small:hover {
+    4% {
+        height: 12%;
+    }
+
+    8% {
+        height: 14%;
+    }
+
+    12% {
+        height: 29%;
+    }
+
+    16% {
+        height: 37%;
+    }
+
+    20% {
+        height: 25%;
+    }
+
+    24% {
+        height: 44%;
+    }
+
+    28% {
+        height: 63%;
+    }
+
+    32% {
+        height: 58%;
+    }
+
+    36% {
+        height: 41%;
+    }
+
+    40% {
+        height: 80%;
+    }
+
+    44% {
+        height: 100%;
+    }
+
+    48% {
+        height: 30%;
+    }
+
+    52% {
+        height: 50%;
+    }
+
+    56% {
+        height: 70%;
+    }
+
+    60% {
+        height: 60%;
+    }
+
+    64% {
+        height: 50%;
+    }
+
+    68% {
+        height: 32%;
+    }
+
+    72% {
+        height: 58%;
+    }
+
+    76% {
+        height: 14%;
+    }
+
+    80% {
+        height: 36%;
+    }
+
+    84% {
+        height: 74%;
+    }
+
+    88% {
+        height: 85%;
+    }
+
+    92% {
+        height: 52%;
+    }
+
+    96% {
+        height: 20%;
+    }
+
+    100% {
+        height: 35%;
+    }
+}
+
+.single-small .single-small,
+.single-small .single-small:hover {
     background-color: transparent;
     opacity: 1;
 }
 
-.single-small, button.single-small {
+.single-small,
+button.single-small {
     width: 42px;
     height: 42px;
 }
@@ -89,26 +169,28 @@ html {
     cursor: pointer;
     display: inline-block;
     padding: 7px;
-    transition: opacity .2s cubic-bezier(0.65, 0.05, 0.36, 1);
-    transition: background-color .2s cubic-bezier(.645,.045,.355,1);
 }
 
-.single-small .single-small>.inner{
+.single-small .single-small>.inner {
     margin: -0.5px 0 0;
     position: relative;
     width: 100%;
 }
 
 .single-small .single-small--magnetic span.bar:first-child {
-    transform: translate3d(0,-5px,0);
+    transform: translate3d(0, 5px, 0);
 }
 
-.single-small .single-small--magnetic span.bar:first-child, .single-small .single-small--magnetic span.bar:nth-child(2) {
+.single-small .single-small--magnetic span.bar:nth-child(2) {
+    transform: translate3d(0, -5px, 0);
+}
+
+.single-small .single-small--magnetic span.bar:first-child,
+.single-small .single-small--magnetic span.bar:nth-child(2) {
     background: none;
     top: 0;
 }
-
-.single-small .single-small--magnetic span.bar:first-child, .single-small .single-small--magnetic span.bar:nth-child(2) {
+.single-small .single-small span.bar {
     border-radius: 0;
     content: "";
     display: block;
@@ -116,15 +198,59 @@ html {
     position: absolute;
     width: 100%;
     background-color: #000;
+    transition: transform .4s cubic-bezier(.645,.045,.355,1);
 }
 
-.single-small .single-small--magnetic span.bar:nth-child(3){
+.single-small .single-small--magnetic span.bar {
+    transition: transform .2s cubic-bezier(.645,.045,.355,1) .2s;
+}
+
+.single-small .single-small--magnetic span.bar:nth-child(3) {
     display: none;
 }
 
 .single-small .single-small span.bar:nth-child(3) {
     top: 6px;
 }
+
+.single-small .single-small--magnetic.active span.bar:first-child,
+.single-small .single-small--magnetic.active span.bar:nth-child(2) {
+    transform: translateZ(0);
+}
+
+.single-small .single-small--magnetic.active span.bar {
+    transition: transform .2s cubic-bezier(0.65, 0.05, 0.36, 1);
+}
+
+.single-small .single-small--magnetic.active span.bar:first-child:before {
+    transform: rotate(45deg);
+}
+
+.single-small .single-small--magnetic.active span.bar:nth-child(2):before {
+    transform: rotate(-45deg);
+}
+
+.single-small .single-small--magnetic.active span.bar:first-child:before,
+.single-small .single-small--magnetic.active span.bar:nth-child(2):before {
+    border-radius: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    transition: transform .4s cubic-bezier(.645,.045,.355,1);
+}
+.single-small .single-small--magnetic span.bar:first-child:before, .single-small .single-small--magnetic span.bar:nth-child(2):before {
+    border-radius: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    position: absolute;
+    width: 100%;
+    transition: transform .4s cubic-bezier(.645,.045,.355,1);
+}
+
+
 
 .hide-scrollbar::-webkit-scrollbar {
     display: none;
@@ -136,7 +262,7 @@ html {
 }
 
 .goldentext {
-    background: linear-gradient(-45deg,#ffd580,#f0a925,#ffe56f,#f6b547);
+    background: linear-gradient(-45deg, #ffd580, #f0a925, #ffe56f, #f6b547);
     animation: gradient 2s linear infinite;
     background-size: 200% 200%;
     -webkit-background-clip: text;
@@ -145,15 +271,17 @@ html {
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .panel {
@@ -161,9 +289,10 @@ html {
 }
 
 .highlight {
-    background: linear-gradient(102deg,rgba(255,130,130,0) .9%,#ff8282 2.4%,rgba(255,130,130,.5) 5.8%,rgba(255,130,130,.1) 93%,rgba(255,130,130,.7) 96%);
+    background: linear-gradient(102deg, rgba(255, 130, 130, 0) .9%, #ff8282 2.4%, rgba(255, 130, 130, .5) 5.8%, rgba(255, 130, 130, .1) 93%, rgba(255, 130, 130, .7) 96%);
     border-radius: 7.5px;
-    text-shadow: -12px 12px 9.8px rgb(255 130 130/ 70%), 21px -18.1px 7.3px #fff, -18.1px -27.3px 30px #fff;;
+    text-shadow: -12px 12px 9.8px rgb(255 130 130/ 70%), 21px -18.1px 7.3px #fff, -18.1px -27.3px 30px #fff;
+    ;
 }
 
 .overlay-item {
@@ -176,7 +305,7 @@ html {
 }
 
 .highlight-yellow {
-    background: linear-gradient(104deg,rgba(255,226,130,0) .9%,#ffde82 2.4%,rgba(255,211,130,.5) 5.8%,rgba(255,215,130,.1) 93%,rgba(255,215,130,.7) 96%),linear-gradient(183deg,rgba(255,197,130,0),rgba(255,191,107,.3) 7.9%,rgba(255,211,130,0) 15%);
+    background: linear-gradient(104deg, rgba(255, 226, 130, 0) .9%, #ffde82 2.4%, rgba(255, 211, 130, .5) 5.8%, rgba(255, 215, 130, .1) 93%, rgba(255, 215, 130, .7) 96%), linear-gradient(183deg, rgba(255, 197, 130, 0), rgba(255, 191, 107, .3) 7.9%, rgba(255, 211, 130, 0) 15%);
     border-radius: 7.5px;
     text-shadow: -2px 2px 1.8px rgb(255 215 130 / 70%), 1px -0.1px 2.3px #fff, -8.1px -17.3px 20px #fff;
 }
@@ -189,8 +318,17 @@ html {
     font-size: 0;
 }
 
-@keyframes blink { 50% { opacity: 0; } }
-@-webkit-keyframes blink { 50% { opacity: 0; } }
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
 
 .cursor--blinking {
     opacity: 1;
