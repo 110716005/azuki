@@ -43,7 +43,6 @@ function Gallery() {
 
   const accountChangedHandler = (newAccount) => {
     setDefaultAccount(newAccount.toString())
-    setConnButtonText(newAccount.toString())
     getUserBalance(newAccount.toString())
     setBalance(balanceOf(newAccount.toString()))
   }
@@ -123,19 +122,19 @@ function Gallery() {
   }
 
   return (
-    <div className="bg-olive w-full lg:h-screen h-full">
-      <img className="w-full opacity-40 object-cover h-screen" src="/claimtoken.png" alt="" />
-      <div className="fixed h-full bottom-0 left-0 w-full flex flex-col justify-center items-center">
-        <div className="relative w-6/12 h-1/6 bg-olive text-gray-500 bg-opacity-50 flex items-center justify-center flex-col rounded-xl font-mono tracking-wide duration-300">
-          <div className="px-2 text-center lg:text-xl text-md py-8 font-blackitems-center justify-center">
-            <p className="uppercase absolute top-2 left-3 text-sm highlight">{isConnected ? "account:" + truncate(defaultAccount) : ""}</p>
-            <p className={"uppercase mt-8 font-mono text-base font-black " + (balance == 0 ? "text-red-600" : "")}>{errorMessage}</p>
-            <p className="pb-3 font-mono text-lg font-black">{(isConnected ? "" : "You need to connect your MetaMask wallet before you can claim BeanCoin.")}</p>
-            <button className={"text-white text-base uppercase transform duration-300 bg-azukired px-3 py-3 bg-opacity-70 rounded-md hover:scale-105 hover:bg-red-600 mb-5 " + (isConnected ? "hidden " : "")} onClick={connectWalletHandler}>{truncate(connButtonText)}</button>
+    <div className="w-full lg:h-screen h-full overflow-scroll flex flex-col">
+      <img className="fixed w-full opacity-40 object-cover h-screen z-0" src="/claimtoken.png" alt="" />
+      <div className="h-full w-full flex flex-col justify-center items-center mt-16 px-5 z-10">
+        <div className="relative lg:w-6/12 lg:h-1/6 w-full bg-olive text-gray-500 bg-opacity-50 flex items-center justify-center flex-col rounded-xl font-mono tracking-wide duration-300">
+          <div className="px-2 text-center lg:text-xl lg:py-8 py-2 font-black items-center justify-center">
+            <p className="uppercase absolute top-2 left-3 highlight lg:text-xs text-4xs">{isConnected ? "account:" + truncate(defaultAccount) : ""}</p>
+            <p className={"uppercase lg:mt-8 font-mono lg:text-base text-xs font-black " + (balance == 0 ? "text-red-600" : "mt-8")}>{errorMessage}</p>
+            <p className="pb-3 font-mono lg:text-lg text-sm font-black">{(isConnected ? "" : "You need to connect your MetaMask wallet before you can claim BeanCoin.")}</p>
+            <button className={"text-white uppercase lg:text-lg text-sm transform duration-300 bg-azukired lg:px-3 lg:py-3 px-2 py-2 bg-opacity-70 rounded-md hover:scale-105 hover:bg-red-600 lg:mb-5 " + (isConnected ? "hidden " : "")} onClick={connectWalletHandler}>{truncate(connButtonText)}</button>
             {balance == 0 ?
               <></>
               :
-              <button className={"text-white text-base uppercase transform duration-300 bg-azukired px-3 py-3 bg-opacity-70 rounded-md hover:scale-105 hover:bg-red-600 mb-5 " + (isConnected ? "" : "hidden") + (balance == 0 ? "  cursor-not-allowed" : "")} disabled={balance == 0} onClick={setApprovalForAll}>
+              <button className={"text-white lg:text-base text-sm uppercase transform duration-300 bg-azukired lg:px-3 lg:py-3 px-2 py-2 bg-opacity-70 rounded-md hover:scale-105 hover:bg-red-600 lg:mb-5 " + (isConnected ? "" : "hidden") + (balance == 0 ? "  cursor-not-allowed" : "")} disabled={balance == 0} onClick={setApprovalForAll}>
                 {(isClaiming ?
                   <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
                     <circle class="opacity-20" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -147,16 +146,16 @@ function Gallery() {
             }
           </div>
         </div>
-        <p className="p-2 uppercase text-xs font-black opacity-50">VERIFIED SMART CONTRACT ADDRESS: 0x025C6da5BD0e6A5dd1350fda9e3B6a614B205a1F</p>
-        <div className="bg-olive w-6/12 bg-opacity-50 px-4 py-5 rounded-md ">
-          <p className="font-mono opacity-50 leading-5 font-bold">100 million tokens (24.2% of the Ecosystem Fund and 15% of the total supply of BeanCoin) <span className="highlight">are claimable by Azuki NFT holders</span> upon launch of BeanCoin.
+        <p className="p-2 uppercase lg:text-xs text-center text-5xs font-bold opacity-60">VERIFIED SMART CONTRACT ADDRESS: 0x025C6da5BD0e6A5dd1350fda9e3B6a614B205a1F</p>
+        <div className="bg-olive bg-opacity-50 lg:w-6/12 w-full text-sm lg:text-md px-4 py-5 rounded-md mb-3">
+          <p className="font-mono leading-5 font-bold opacity-60">100 million tokens (24.2% of the Ecosystem Fund and 15% of the total supply of BeanCoin) <span className="highlight">are claimable by Azuki NFT holders</span> upon launch of BeanCoin.
             To ensure a fair launch of BeanCoin to Azuki and Beanz NFT holders, the allocation is informed by the difference in floor price between each collection of NFTs, roughly the month prior to the token claim launch.
           </p>
-          <table className="mx-auto pt-5 w-7/12 mt-10 font-mono">
+          <table className="mx-auto pt-5 lg:w-7/12 w-full mt-10 font-mono">
             <thead>
               <tr className="flex border-b border-black border-opacity-40">
-                <th className="flex flex-1 text-left text-sm font-bold p-3">NFT</th>
-                <th className="flex flex-1 text-left text-sm font-bold p-3">BEANCOIN ALLOCATED PER NFT</th>
+                <th className="flex flex-1 text-left lg:text-sm text-xs font-bold p-3">NFT</th>
+                <th className="flex flex-1 text-left lg:text-sm text-xs font-bold p-3">BEANCOIN ALLOCATED PER NFT</th>
               </tr>
             </thead>
             <tbody>
@@ -166,7 +165,7 @@ function Gallery() {
               </tr>
             </tbody>
           </table>
-          <p className="mx-auto w-7/12 max-w-2xl text-sm text-black space-y-2 font-mono pt-3 mt-3 opacity-60 font-black">
+          <p className="mx-auto lg:w-7/12 w-full max-w-2xl lg:text-sm text-xs text-black space-y-2 font-mono pt-3 mt-3 opacity-60 font-black">
             <li className="">
               There is no distinction between Beanz for the claim.
             </li>
