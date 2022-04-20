@@ -28,6 +28,13 @@ function mindmap() {
     <>
       <Head>
         <title>Azuki | Mindmap</title>
+        <meta name="description" content="A brand for the metaverse, built by the community."></meta>
+        <meta name="twitter:card" content="summary_large_image"></meta>
+        <meta name="twitter:site" content="@azukizen"></meta>
+        <meta name="twitter:creator" content="@azukizen"></meta>
+        <meta name="twitter:title" content="Azuki"></meta>
+        <meta name="twitter:description" content="We are the skaters of the internet."></meta>
+        <meta name="twitter:image" content="https://azuki.com/twitterimage.jpg"></meta>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <div className="lg:px-8 pt-24 lg:pt-0 bg-gray-100 min-h-screen md:px-5 relative">
