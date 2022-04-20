@@ -12,7 +12,7 @@ function careers() {
         <div className="bg-azukired text-white">
           <div className="max-w-11xl grid grid-cols-1 w-full mx-auto bg-cover">
             <img className="lg:col-start-1 lg:row-start-1 row-start-2 z-10 lg:mt-24 mt-12 lg:w-7/12 ml-auto" src="https://www.azuki.com/job_illo_final2.png" alt="" />
-            <div className="h-full lg:w-6/12 w-full lg:pl-8 lg:pr-0 px-8 flex lg:justify-start juestify-center lg:text-left text- items-center lg:col-start-1 lg:row-start-1">
+            <div className="h-full  lg:w-6/12  w-full lg:pl-8 lg:pr-0 px-8 text-left flex lg:justify-start justify-center lg:text-left text-center items-center  lg:col-start-1	lg:row-start-1">
               <div className="w-full lg:pt-20 pt-26">
                 <h1 className="font-sans uppercase font-black 2xl:text-7xl xl:text-6xl md:text-4xl text-3xl tracking-tight relative">
                   Calling All Skaters<span className="hidden lg:inline-block opacity-[0.05] 2xl:text-7xl xl:text-6xl md:text-4xl text-3xl ">//</span>

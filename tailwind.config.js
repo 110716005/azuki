@@ -59,6 +59,9 @@ module.exports = {
           '0 16px 16px hsl(0deg 0% 0% / 8%)'
         ],
       },
+      padding: {
+        '26': '6.5rem',
+      }
     },
   },
   plugins: [],
