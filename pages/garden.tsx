@@ -2,8 +2,190 @@ import React from 'react'
 import Title from '../components/garden/Title'
 import Profile from '../components/garden/Profile'
 import Link from '../components/garden/Link'
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Head from 'next/head'
+import useEmblaCarousel from 'embla-carousel-react'
+
+const profileData = [
+  {
+    name: "ZAGABOND",
+    career: "human bean",
+    account: "@ZAGABOND",
+    link: "https://twitter.com/ZAGABOND",
+    introduce: "DeFi maker. Former Silicon Valley tech company. Collection of sports shorts."
+  },
+  {
+    name: "HOSHIBOY",
+    career: "design",
+    account: "@hoshiboyzen",
+    link: "https://twitter.com/hoshiboyzen",
+    introduce: "Participated in Y-Combinator twice. Watch British anime. ngmi."
+  },
+  {
+    name: "2PM.FLOW",
+    career: "project",
+    account: "@ 2pmflow",
+    link: "https://twitter.com/2pmflow",
+    introduce: "Rap newcomer, ex-Google/Y-Combinator. NBA Top Shot lost 80% but gained 100% in a good mood."
+  },
+  {
+    name: "location tba",
+    career: "project",
+    account: "@locationtba",
+    link: "https://twitter.com/locationtba",
+    introduce: "Former Facebook software engineer. In the Metaverse with Zuckerberg."
+  },
+  {
+    name: "STEAMBOY",
+    career: "art",
+    account: "@ steamboy33",
+    link: "https://twitter.com/steamboy33",
+    introduce: "Former Art Director of Overwatch. Started playing with pictures in the 90s. In fact, I didn't watch Steamboy."
+  },
+  {
+    name: "NJOO",
+    career: "art",
+    account: "@njoo ",
+    link: "https://twitter.com/njoo",
+    introduce: "Participated in Y-Combinator twice. Watch British anime. ngmi."
+  },
+  {
+    name: "DAPH",
+    career: "community",
+    account: "@daphtheSHAFT ",
+    link: "https://twitter.com/daphtheSHAFT",
+    introduce: "From eSports to e-money, catch keyboard warriors on Discord now."
+  },
+  {
+    name: "DEMNA",
+    career: "product",
+    account: "@DemnaAzuki ",
+    link: "https://twitter.com/DemnaAzuki",
+    introduce: "Former Google Product Manager. Strong opinions, but not stubborn. Hates hiking."
+  }
+]
+
+export const EmblaCarousel = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: false })
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedProfileIndex, setSelectedProfileIndex] = useState(0);
+
+  const scrollTo = useCallback((index) => emblaApi && emblaApi.scrollTo(index), [
+    emblaApi
+  ]);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi, setSelectedIndex]);
+
+  useEffect(() => {
+    if (emblaApi) {
+      // Embla API is ready
+    }
+  }, [emblaApi])
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
+
+  return (
+    <div className="pt-16 lg:hidden pb-36">
+      <div className="embla">
+        <div className="embla__viewport" ref={emblaRef}>
+          <div className="embla__container">
+            <div className="embla__slide_garden">
+              <div className="embla__slide__inner pb-1">
+                <div id="section1" className="panel flex flex-col pt-6 mt-2">
+                  <h1 className="font-sans w-full tracking-tight pb-3 text-2xl font-black uppercase">From the alley to the garden <span className="opacity-10">//</span></h1>
+                  <div className="font-mono text-gray-800 text-xs leading-4 w-full">
+                    <p>Red beans are a brand. </p>
+                    <p>A metaverse brand. </p>
+                    <p><span className="highlight py-1 px-2 font-black">A brand new, community-created brand. </span></p>
+                    <br />
+                    <p>We start with 10,000 avatars. We will carry out a large number of products and activities such as trendy brand cooperation, NFT airdrops, and online activities step by step. The red bean is our status symbol in the universe - let's build it together. </p>
+                    <br />
+                    <p>At Xiaodouyuan, we combine art, community, and culture into unique magic. The boundaries between virtual and reality are dissolving, and existing rules are being rebuilt.</p>
+                    <br />
+                    <p>choose red beans <span className="lg:px-1 px-0.5 opacity-20">//</span></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="embla__slide_garden">
+              <div className="embla__slide__inner pb-1">
+                <div id="section1" className="panel flex flex-col pt-6 mt-2">
+                  <h1 className="font-sans w-full tracking-tight pb-3 text-2xl font-black uppercase">Created by many <span className="opacity-10 font-black">//</span></h1>
+                  <div className="grid border-l border-t border-r-0 border-b-0 border-black border-opacity-10 grid-cols-4 border w-full max-w-xl 2xl:max-w-2xl lg:pr-24">
+                    <Profile img="https://www.azuki.com/team2/zzz.png" name="ZAGABOND" career="bean man" account="@ZAGABOND" link="https://twitter.com/ZAGABOND" introduce="DeFi maker. Former Silicon Valley tech company. Collection of sports shorts." selected={selectedProfileIndex === 0} click={() => setSelectedProfileIndex(0)} />
+                    <Profile img="https://www.azuki.com/team2/hoshi.png" name="HOSHIBOY" career="design" account="@hoshiboyzen" link="https://twitter.com/hoshiboyzen" introduce="Participated in Y-Combinator twice. Watch British anime. ngmi." selected={selectedProfileIndex === 1} click={() => setSelectedProfileIndex(1)} />
+                    <Profile img="https://www.azuki.com/team2/2pm.png" name="2PM.FLOW" career="project" account="@ 2pmflow" link="https://twitter.com/2pmflow" introduce="Rap newcomer, ex-Google/Y-Combinator. NBA Top Shot lost 80% but gained 100% in a good mood." selected={selectedProfileIndex === 2} click={() => setSelectedProfileIndex(2)} />
+                    <Profile img="https://www.azuki.com/team2/tba.png" name="location tba" career="project" account="@locationtba" link="https://twitter.com/locationtba" introduce="Former Facebook software engineer. In the Metaverse with Zuckerberg." selected={selectedProfileIndex === 3} click={() => setSelectedProfileIndex(3)} />
+                    <Profile img="https://www.azuki.com/team2/steamboy.png" name="STEAMBOY" career="art" account="@ steamboy33" link="https://twitter.com/steamboy33" introduce="Former Art Director of Overwatch. Started playing with pictures in the 90s. In fact, I didn't watch Steamboy." click={() => setSelectedProfileIndex(4)} selected={selectedProfileIndex === 4} />
+                    <Profile img="https://www.azuki.com/team2/joo.png" name="NJOO" career="art" account="@njoo " link="https://twitter.com/njoo" introduce="Participated in Y-Combinator twice. Watch British anime. ngmi." selected={selectedProfileIndex === 5} click={() => setSelectedProfileIndex(5)} />
+                    <Profile img="https://www.azuki.com/team2/daph.png" name="DAPH" career="community" account="@daphtheSHAFT " link="https://twitter.com/daphtheSHAFT" introduce="From eSports to e-money, catch keyboard warriors on Discord now." selected={selectedProfileIndex === 6} click={() => setSelectedProfileIndex(6)} />
+                    <Profile img="https://www.azuki.com/team2/beboop.png" name="DEMNA" career="product" account="@DemnaAzuki " link="https://twitter.com/DemnaAzuki" introduce="Former Google Product Manager. Strong opinions, but not stubborn. Hates hiking." selected={selectedProfileIndex === 7} click={() => setSelectedProfileIndex(7)} />
+                  </div>
+                  <div className="block lg:hidden pt-6">
+                    <p className="font-bold uppercase border-b pb-2">{profileData[selectedProfileIndex].name} <span className="opacity-20">//</span> <span className="font-mono text-2xs opacity-40">{profileData[selectedProfileIndex].career}</span></p>
+                    <p className="font-[500] text-xs pt-3 font-mono border-b pb-3 leading-4">
+                      {profileData[selectedProfileIndex].introduce}
+                      <a href="" className="font-mono underline py-2 flex items-center uppercase  leading-3 w-full">
+                        <svg xmlns="http://www.w3.org/2000/svg" className=" fill-current stroke-current h-2 w-2 mr-1" viewBox="0 0 40 40"><path d="M38.526 8.625a15.199 15.199 0 01-4.373 1.198 7.625 7.625 0 003.348-4.211 15.25 15.25 0 01-4.835 1.847 7.6 7.6 0 00-5.557-2.404c-4.915 0-8.526 4.586-7.416 9.346-6.325-.317-11.934-3.347-15.69-7.953C2.01 9.869 2.97 14.345 6.358 16.612a7.58 7.58 0 01-3.446-.953c-.084 3.527 2.444 6.826 6.105 7.56a7.63 7.63 0 01-3.438.13 7.618 7.618 0 007.112 5.286A15.306 15.306 0 011.42 31.79a21.55 21.55 0 0011.67 3.42c14.134 0 22.12-11.937 21.637-22.643a15.499 15.499 0 003.799-3.941z"></path></svg>
+                        {profileData[selectedProfileIndex].account}
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="embla__slide_garden">
+              <div className="embla__slide__inner pb-1">
+                <div id="section1" className="panel flex flex-col pt-6 mt-2">
+                  <h1 className="font-sans w-full tracking-tight pb-3 text-2xl font-black uppercase">Into the rabbit hole <span className="opacity-10">//</span></h1>
+                  <div className="font-mono text-gray-800 text-xs leading-5 w-full tracking-wider">
+                    <p className="mb-3">
+                      We welcome brave you to an unknown new world.
+                      It is a new world created by more people and shared by most people...
+                    </p>
+                    <div className="border-t grid pt-6 z-50 border-black border-opacity-10 gap-3 w-full max-w-2xl">
+                      <Link img="https://www.azuki.com/rh/manifesto.png" title="gallery" content="10,000 red beans" link="/gallery" />
+                      <Link img="https://www.azuki.com/rh/updates.png" title="recruitment" content="Join the red bean team" link="/careers" />
+                      <Link img="https://www.azuki.com/rh/twitter.png" title="twitter" content="Tweet 🐦" link="https://twitter.com/azukiofficial" />
+                      <Link img="https://www.azuki.com/rh/discord.png" title="discord" content="Join the red bean community" link="https://discord.com/invite/azuki" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="block lg:hidden fixed bottom-0 w-screen">
+        <div className="relative pt-2 bg-gray-200 h-20 z-50 px-2">
+          <div className="grid pb-2 h-full grid-cols-3 gap-x-3 overflow-hidden flex items-center justify-center w-full">
+            <div className={"z-50 rounded shadow h-full flex flex-col h-full items-start justify-center duration-500 cursor-pointer px-4 " + (selectedIndex == 0 ? "bg-azukired text-white" : "bg-white")} onClick={() => scrollTo(0)}>
+              <p className="font-mono opacity-40 text-3xs">01.</p>
+              <p className="font-sans uppercase text-5xs font-bold">Garden</p>
+            </div>
+            <div className={"z-50 rounded shadow h-full flex flex-col h-full items-start justify-center duration-500 cursor-pointer px-4 " + (selectedIndex == 1 ? "bg-azukired text-white" : "bg-white")} onClick={() => scrollTo(1)}>
+              <p className="font-mono opacity-40 text-3xs">02.</p>
+              <p className="font-sans uppercase text-5xs font-bold">team</p>
+            </div>
+            <div className={"z-50 rounded shadow h-full flex flex-col h-full items-start justify-center duration-500 cursor-pointer px-4 " + (selectedIndex == 2 ? "bg-azukired text-white" : "bg-white")} onClick={() => scrollTo(2)}>
+              <p className="font-mono opacity-40 text-3xs">03.</p>
+              <p className="font-sans uppercase text-5xs font-bold">rabbit hole</p>
+            </div>
+          </div>
+        </div>
+        <img className={"-translate-y-20 duration-700 w-1/2 absolute ease-in-out transform  bottom-0 right-0 z-10 block " + (selectedIndex == 0 ? "opacity-100" : "opacity-0")} src="https://www.azuki.com/girl44.png" />
+      </div>
+    </div>
+  )
+}
+
 function garden() {
   const [scrollPercent, setScrollPercent] = useState(0);
 
@@ -146,6 +328,7 @@ function garden() {
           </div>
           <img className="fixed w-1/2 bottom-0 right-0" src="https://www.azuki.com/girl23.png" alt="" />
         </div>
+        <EmblaCarousel />
       </main>
     </>
   )

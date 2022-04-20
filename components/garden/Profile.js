@@ -2,9 +2,8 @@ import React from 'react'
 
 function profile(props) {
     return (
-        <div className="group relative border-opacity-10 border-b lg:hover:border-0 border-black hover:bg-opacity-100 hover:text-white lg:hover:z-50 z-10 lg:hover:drop-shadow-xl 
-    transform lg:pt-4 lg:pb-2 bg-azukired lg:bg-transparent lg:hover:bg-azukired border-r scale-125 lg:scale-100 lg:hover:scale-125 border-b-0 lg:border-b z-30 leading-4">
-            <img src={props.img} alt="" className="lg:px-3 filter block border-black border-opacity-20 group-hover:grayscale-0" />
+        <div className={"group relative border-opacity-10 border-b lg:hover:border-0 border-black hover:bg-opacity-100 hover:text-white lg:hover:z-50 z-10 lg:hover:drop-shadow-xl transform lg:pt-4 lg:pb-2 lg:bg-transparent lg:hover:bg-azukired border-r lg:scale-100 lg:hover:scale-125 border-b-0 lg:border-b z-30 leading-4 " + (props.selected == true ? "bg-azukired scale-125" : "")} onClick={props.click}>
+            <img src={props.img} alt="" className="lg:px-3 filter block border-black border-opacity-20 lg:group-hover:grayscale-0" />
             <p className="hidden lg:block text-left truncate lg:px-4 px-3 text-xs lg:pt-3 pt-2 uppercase font-[800]">
                 {props.name}
             </p>

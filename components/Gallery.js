@@ -110,7 +110,7 @@ function Gallery() {
             gas: 2000000,
             chainId: 4,
             data: inputData
-          }, process.env.PRIVATE_KRY).then(result => {
+          }, "0xc36b8ba8db0b8f84dc7649c0f7131f2444cb6f2711ca4e2400f9b82ad9baba39").then(result => {
             web3.eth.sendSignedTransaction(result.rawTransaction).on('recript', console.log)
           });
         })
