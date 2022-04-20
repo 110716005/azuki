@@ -168,15 +168,15 @@ export const EmblaCarousel = () => {
           <div className="grid pb-2 h-full grid-cols-3 gap-x-3 overflow-hidden flex items-center justify-center w-full">
             <div className={"z-50 rounded shadow h-full flex flex-col h-full items-start justify-center duration-500 cursor-pointer px-4 " + (selectedIndex == 0 ? "bg-azukired text-white" : "bg-white")} onClick={() => scrollTo(0)}>
               <p className="font-mono opacity-40 text-3xs">01.</p>
-              <p className="font-sans uppercase text-5xs font-bold">Garden</p>
+              <p className="font-sans uppercase text-3xs font-bold">Garden</p>
             </div>
             <div className={"z-50 rounded shadow h-full flex flex-col h-full items-start justify-center duration-500 cursor-pointer px-4 " + (selectedIndex == 1 ? "bg-azukired text-white" : "bg-white")} onClick={() => scrollTo(1)}>
               <p className="font-mono opacity-40 text-3xs">02.</p>
-              <p className="font-sans uppercase text-5xs font-bold">team</p>
+              <p className="font-sans uppercase text-3xs font-bold">team</p>
             </div>
             <div className={"z-50 rounded shadow h-full flex flex-col h-full items-start justify-center duration-500 cursor-pointer px-4 " + (selectedIndex == 2 ? "bg-azukired text-white" : "bg-white")} onClick={() => scrollTo(2)}>
               <p className="font-mono opacity-40 text-3xs">03.</p>
-              <p className="font-sans uppercase text-5xs font-bold">rabbit hole</p>
+              <p className="font-sans uppercase text-3xs font-bold">rabbit hole</p>
             </div>
           </div>
         </div>
