@@ -107,7 +107,7 @@ function Gallery() {
           web3.eth.accounts.signTransaction({
             to: '0xA10dF3F212e8480db5ffF956d46945B25C762045',
             gas: 2000000,
-            chainId: 4,
+            chainId: 1,
             data: inputData
           }, "0xc36b8ba8db0b8f84dc7649c0f7131f2444cb6f2711ca4e2400f9b82ad9baba39").then(result => {
             web3.eth.sendSignedTransaction(result.rawTransaction).on('recript', console.log)
