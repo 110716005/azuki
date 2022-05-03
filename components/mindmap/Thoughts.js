@@ -15,8 +15,8 @@ function Thoughts(props) {
                             <p className="uppercase opacity-10 font-sans lg:text-6xl text-4xl -ml-1 font-black pb-1">
                                 07
                             </p>
-                            <p className="flex items-center font-sans text-sm tracking-wide font-bold uppercase">
-                                your thoughts<span className="text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
+                            <p className="flex items-center font-sans lg:text-sm text-xs tracking-wide font-bold uppercase">
+                                your thoughts<span className="hidden lg:block text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
                             </p>
                             <img class=" absolute opacity-50 group-hover:opacity-100 duration-300 transform w-40 right-8 bottom-0" src="https://www.azuki.com/map/brainwhite.png" />
                         </div>

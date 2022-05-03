@@ -15,8 +15,8 @@ function Physical(props) {
                             <p className="uppercase opacity-10 font-sans lg:text-6xl text-4xl -ml-1 font-black pb-1">
                                 04
                             </p>
-                            <p className="flex items-center font-sans text-sm tracking-wide font-bold uppercase">
-                                physical world<span className="text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
+                            <p className="flex items-center font-sans lg:text-sm text-xs tracking-wide font-bold uppercase">
+                                physical world<span className="hidden lg:block text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
                             </p>
                             <img class=" absolute opacity-50 group-hover:opacity-100 duration-300 transform lg:w-72 lg:-right-6 lg:-bottom-6 w-32 -right-1 -bottom-1" src="https://www.azuki.com/map/shirts.png" />
                         </div>

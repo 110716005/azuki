@@ -17,7 +17,7 @@ function Seed(props) {
                                 06
                             </p>
                             <p className="flex items-center font-sans lg:text-sm text-xs tracking-wide font-bold uppercase">
-                                seed <span className="text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
+                                seed <span className="hidden lg:block text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
                             </p>
                             <img class=" absolute opacity-50 group-hover:opacity-100 duration-300 transform lg:w-56 lg:right-2 lg:bottom-4 w-8/12 right-2 bottom-3" src="https://www.azuki.com/map/seedlings.png" />
                         </div>

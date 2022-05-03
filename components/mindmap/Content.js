@@ -16,8 +16,8 @@ function Content(props) {
               <p className="uppercase opacity-10 font-sans lg:text-6xl text-4xl -ml-1 font-black pb-1">
                 01
               </p>
-              <p className="flex items-center font-sans text-sm tracking-wide font-bold uppercase">
-                vision and values <span className="text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
+              <p className="flex items-center font-sans lg:text-sm text-xs tracking-wide font-bold uppercase">
+                vision and values <span className="hidden lg:block text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
               </p>
               <img class=" absolute opacity-50 group-hover:opacity-100 duration-300 transform  lg:w-40 w-1/2 lg:right-4 -right-1 lg:bottom-4 -bottom-1 overflow-hidden" src="https://www.azuki.com/map/beans.png" />
             </div>

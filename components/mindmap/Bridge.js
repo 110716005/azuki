@@ -15,7 +15,7 @@ function Bridge(props) {
                             <p className="uppercase opacity-10 font-sans lg:text-6xl text-4xl -ml-1 font-black pb-1">
                                 05
                             </p>
-                            <p className="flex items-center font-sans text-sm tracking-wide font-bold uppercase">
+                            <p className="flex items-center font-sans lg:text-sm text-xs tracking-wide font-bold uppercase">
                                 bridge <span className="text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
                             </p>
                             <img class="absolute opacity-50 group-hover:opacity-100 duration-300 transform  lg:w-72 lg:-right-24 lg:-bottom-10 w-7/12 -right-3 -bottom-3" src="https://www.azuki.com/map/bridge.png" />
