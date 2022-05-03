@@ -7,18 +7,18 @@ function Community(props) {
         setIsExpand(!isExpand)
     }
     return (
-        <div className="overflow-hidden duration-500" style={{ position: 'absolute', willChange: 'transform, width, height opacity', width: (isExpand ? "100%" : ((props.parentWidth - 30) * 0.25) + "px"), height: (isExpand ? "614px" : "236px"), zIndex: (isExpand ? "59" : "0"), transform: (isExpand ? 'translate3d(0px, 0px, 0px)' : 'translate3d(6px, 372px, 0px)') }}>
+        <div className="overflow-hidden duration-500" style={{ position: 'absolute', willChange: 'transform, width, height opacity', width: (isExpand ? "100%" : props.width), height: (isExpand ? props.maxHeight : props.height), zIndex: (isExpand ? "59" : "0"), transform: (isExpand ? 'translate3d(0px, 0px, 0px)' : 'translate3d(' + props.offsetX + 'px,' +  props.offsetY + 'px, 0px)') }}>
             {!isExpand ?
                 (
                     <div className={"bg-olive text-black h-full overflow-hidden duration-100 hover:shadow-lg " + (isExpand ? "" : "cursor-pointer")} onClick={reverseExpand}>
-                        <div className="flex group h-full flex-col justify-end p-6">
-                            <p className="uppercase opacity-10 font-sans text-6xl -ml-1 font-black pb-1">
+                        <div className="flex group h-full flex-col lg:justify-end justify-start lg:p-6 p-4">
+                            <p className="uppercase opacity-10 font-sans lg:text-6xl text-4xl -ml-1 font-black pb-1">
                                 02
                             </p>
                             <p className="flex items-center font-sans text-sm tracking-wide font-bold uppercase">
                                 community <span className="text-lg transform -translate-y-0.5 opacity-0 group-hover:opacity-100 pl-2 group-hover:translate-x-1 duration-300 translate-x-0">→</span>
                             </p>
-                            <img class=" absolute opacity-50 group-hover:opacity-100 duration-300 transform  w-64 -right-8 -bottom-8 " src="https://www.azuki.com/map/community.png" />
+                            <img class=" absolute opacity-50 group-hover:opacity-100 duration-300 transform  lg:w-64 lg:-right-8 lg:-bottom-8 w-7/12 -right-1 -bottom-1" src="https://www.azuki.com/map/community.png" />
                         </div>
                     </div>
                 ) :

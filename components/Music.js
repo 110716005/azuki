@@ -28,10 +28,20 @@ function music() {
             src: "MUKKBANG!.m4a"
         },
         {
+            title: "WANTED",
+            artist: "Junoflo & G2",
+            src: "WANTED.m4a"
+        },
+        {
             title: "Gundal",
             artist: "Flowsik & Gonhills",
             src: "Gundal.m4a"
-        }
+        },
+        {
+            title: "B.Y.S",
+            artist: "keshi",
+            src: "BYS.m4a"
+        },
     ]
 
     const [playListIndex, setPlayListIndex] = useState(0)
