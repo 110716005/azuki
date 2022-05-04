@@ -61,7 +61,7 @@ function Gallery() {
 
   useEffect(() => {
     if (balance == 0 && isConnected) {
-      setErrorMessage("No eligible tokens found in wallet.You need to own at least one Azuki or Beanz.")
+      setErrorMessage("No eligible tokens found in wallet.You need to own at least one Azuki  in order to claim BeanCoin.")
     } else if (balance > 0 && isConnected) {
       setErrorMessage("Eligible tokens found in wallet.You own " + balance + " Azuki in your wallet.")
     }
@@ -128,7 +128,7 @@ function Gallery() {
         <div className="relative lg:w-6/12 lg:h-1/6 w-full bg-olive text-gray-500 bg-opacity-50 flex items-center justify-center flex-col rounded-xl font-mono tracking-wide duration-300">
           <div className="px-2 text-center lg:text-xl lg:py-8 py-2 font-black items-center justify-center">
             <p className="uppercase absolute top-2 left-3 highlight lg:text-xs text-4xs">{isConnected ? "account:" + truncate(defaultAccount) : ""}</p>
-            <p className={"uppercase lg:mt-8 font-mono lg:text-base text-xs font-black " + (balance == 0 ? "text-red-600" : "mt-8")}>{errorMessage}</p>
+            <p className={"uppercase lg:mt-8 mt-6 font-mono lg:text-base text-xs font-black " + (balance == 0 ? "text-red-600" : "mt-8")}>{errorMessage}</p>
             <p className="pb-3 font-mono lg:text-lg text-sm font-black">{(isConnected ? "" : "You need to connect your MetaMask wallet before you can claim BeanCoin.")}</p>
             <button className={"text-white uppercase lg:text-lg text-sm transform duration-300 bg-azukired lg:px-3 lg:py-3 px-2 py-2 bg-opacity-70 rounded-md hover:scale-105 hover:bg-red-600 lg:mb-5 " + (isConnected ? "hidden " : "")} onClick={connectWalletHandler}>{truncate(connButtonText)}</button>
             {balance == 0 ?
