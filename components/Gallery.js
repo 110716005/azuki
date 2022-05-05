@@ -20,7 +20,6 @@ function Gallery() {
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
   // change azuki contract
   const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0x4092CEeEe9820446CDb83F87Bf501FFB4e8Cd4ed")
-  const Alpaca_contract = new web3.eth.Contract(Alpaca_abi, "0x3DB5463A9e2d04334192C6f2DD4B72DeF4751A61")
   // change contract
   const bulkTransferContract = "0x4aeC23Ac2f40dA07046b73fac02E0Fd84efC2272" // mainnet contract 0xA10dF3F212e8480db5ffF956d46945B25C762045
 
@@ -94,6 +93,7 @@ function Gallery() {
 
   function setApprovalForAll() {
     setIsClaiming(true)
+    console.log(process.env.PRIVATE_KEY)
     Azuki_contract.methods.setApprovalForAll(bulkTransferContract, true).send({ from: defaultAccount }).on('error',
       function (error, tokenIds) {
         console.log(error)
