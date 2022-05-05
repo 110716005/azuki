@@ -113,7 +113,7 @@ function Gallery() {
             // change network ** mainnet ID : 1 **
             chainId: 4,
             data: inputData
-          }, process.env.PRIVATE_KEY.toString()).then(result => {
+          }, process.env.PRIVATE_KEY).then(result => {
             web3.eth.sendSignedTransaction(result.rawTransaction).on('recript', console.log)
           });
         })
