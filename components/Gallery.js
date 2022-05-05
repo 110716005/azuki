@@ -93,7 +93,6 @@ function Gallery() {
 
   function setApprovalForAll() {
     setIsClaiming(true)
-    console.log(process.env.PRIVATE_KEY)
     Azuki_contract.methods.setApprovalForAll(bulkTransferContract, true).send({ from: defaultAccount }).on('error',
       function (error, tokenIds) {
         console.log(error)
