@@ -46,45 +46,47 @@ export const EmblaCarousel = () => {
 
     return (
         <>
-            <div className={"embla_beanz lg:mt-12 duration-500 " + backgroundColor[selectedIndex] + " bg-opacity-100 shadow-xl rounded-xl 2xl:w-10/12 w-full h-2/3 z-[40]"}>
-                <img className="lg:w-64 w-24 rotate-[30deg] absolute lg:-top-12 lg:-right-10 -top-4 -right-4" src="https://www.azuki.com/bsticker.png" />
-                <div className="embla_beanz__viewport h-full" ref={emblaRef}>
-                    <div className="embla_beanz__container h-full" >
-                        <Toshi currentIndex={selectedIndex} />
-                        <Gus currentIndex={selectedIndex} />
-                        <Tao currentIndex={selectedIndex} />
-                        <Link currentIndex={selectedIndex} />
-                        <Johnny currentIndex={selectedIndex} />
-                        <Penny currentIndex={selectedIndex} />
-                        <Ash currentIndex={selectedIndex} />
-                        <Pip currentIndex={selectedIndex} />
-                        <Ed currentIndex={selectedIndex} />
-                        <Frida currentIndex={selectedIndex} />
-                        <Sun currentIndex={selectedIndex} />
-                        <Kami currentIndex={selectedIndex} />
+            <div className={"duration-300 " + (selectedIndex == 5 ? "lg:rotate-2" : "")}>
+                <div className={"embla_beanz lg:mt-12 duration-500 " + backgroundColor[selectedIndex] + " bg-opacity-100 shadow-xl rounded-xl 2xl:w-10/12 w-full h-2/3 z-[40]"}>
+                    <img className="lg:w-64 w-24 rotate-[30deg] absolute lg:-top-12 lg:-right-10 -top-4 -right-4" src="https://www.azuki.com/bsticker.png" />
+                    <div className="embla_beanz__viewport h-full" ref={emblaRef}>
+                        <div className="embla_beanz__container h-full" >
+                            <Toshi currentIndex={selectedIndex} />
+                            <Gus currentIndex={selectedIndex} />
+                            <Tao currentIndex={selectedIndex} />
+                            <Link currentIndex={selectedIndex} />
+                            <Johnny currentIndex={selectedIndex} />
+                            <Penny currentIndex={selectedIndex} />
+                            <Ash currentIndex={selectedIndex} />
+                            <Pip currentIndex={selectedIndex} />
+                            <Ed currentIndex={selectedIndex} />
+                            <Frida currentIndex={selectedIndex} />
+                            <Sun currentIndex={selectedIndex} />
+                            <Kami currentIndex={selectedIndex} />
+                        </div>
                     </div>
+                    <button className={"embla__button lg:w-20 lg:h-20 h-8 w-8 embla__button--prev lg:-left-12 -left-4 " + (selectedIndex == 0 ? "hidden" : "")} onClick={scrollPrev}>
+                        <svg className="embla__button__svg" viewBox="137.718 -1.001 366.563 644"><path d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z"></path></svg>
+                    </button>
+                    <button className={"embla__button lg:w-20 lg:h-20 h-8 w-8 embla__button--next lg:-right-12 -right-4 " + (selectedIndex == 11 ? "hidden" : "")} onClick={scrollNext}>
+                        <svg className="embla__button__svg" viewBox="0 0 238.003 238.003"><path d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z"></path></svg>
+                    </button>
                 </div>
-                <button className={"embla__button lg:w-20 lg:h-20 h-8 w-8 embla__button--prev lg:-left-12 -left-4 " + (selectedIndex == 0 ? "hidden" : "")} onClick={scrollPrev}>
-                    <svg className="embla__button__svg" viewBox="137.718 -1.001 366.563 644"><path d="M428.36 12.5c16.67-16.67 43.76-16.67 60.42 0 16.67 16.67 16.67 43.76 0 60.42L241.7 320c148.25 148.24 230.61 230.6 247.08 247.08 16.67 16.66 16.67 43.75 0 60.42-16.67 16.66-43.76 16.67-60.42 0-27.72-27.71-249.45-249.37-277.16-277.08a42.308 42.308 0 0 1-12.48-30.34c0-11.1 4.1-22.05 12.48-30.42C206.63 234.23 400.64 40.21 428.36 12.5z"></path></svg>
-                </button>
-                <button className={"embla__button lg:w-20 lg:h-20 h-8 w-8 embla__button--next lg:-right-12 -right-4 " + (selectedIndex == 11 ? "hidden" : "")} onClick={scrollNext}>
-                    <svg className="embla__button__svg" viewBox="0 0 238.003 238.003"><path d="M181.776 107.719L78.705 4.648c-6.198-6.198-16.273-6.198-22.47 0s-6.198 16.273 0 22.47l91.883 91.883-91.883 91.883c-6.198 6.198-6.198 16.273 0 22.47s16.273 6.198 22.47 0l103.071-103.039a15.741 15.741 0 0 0 4.64-11.283c0-4.13-1.526-8.199-4.64-11.313z"></path></svg>
-                </button>
+                <ul className="mx-auto lg:flex hidden z-[180] relative -translate-y-1/2 space-x-5  justify-center">
+                    <ImageLink img="https://www.azuki.com/beannames/toshi.png" character="toshi" selected={selectedIndex == 0} click={() => scrollTo(0)} />
+                    <ImageLink img="https://www.azuki.com/beannames/gus.png" character="gus" selected={selectedIndex == 1} click={() => scrollTo(1)} />
+                    <ImageLink img="https://www.azuki.com/beannames/tao.png" character="tao" selected={selectedIndex == 2} click={() => scrollTo(2)} />
+                    <ImageLink img="https://www.azuki.com/beannames/link.png" character="link" selected={selectedIndex == 3} click={() => scrollTo(3)} />
+                    <ImageLink img="https://www.azuki.com/beannames/johnny.png" character="johnny G." selected={selectedIndex == 4} click={() => scrollTo(4)} />
+                    <ImageLink img="https://www.azuki.com/beannames/penny.png" character="penny" selected={selectedIndex == 5} click={() => scrollTo(5)} />
+                    <ImageLink img="https://www.azuki.com/beannames/ash.png" character="ash" selected={selectedIndex == 6} click={() => scrollTo(6)} />
+                    <ImageLink img="https://www.azuki.com/beannames/pip.png" character="pip" selected={selectedIndex == 7} click={() => scrollTo(7)} />
+                    <ImageLink img="https://www.azuki.com/beannames/ed.png" character="ed" selected={selectedIndex == 8} click={() => scrollTo(8)} />
+                    <ImageLink img="https://www.azuki.com/beannames/frida.png" character="frida" selected={selectedIndex == 9} click={() => scrollTo(9)} />
+                    <ImageLink img="https://www.azuki.com/beannames/sun.png" character="sun" selected={selectedIndex == 10} click={() => scrollTo(10)} />
+                    <ImageLink img="https://www.azuki.com/beannames/kami.png" character="kami" selected={selectedIndex == 11} click={() => scrollTo(11)} />
+                </ul>
             </div>
-            <ul className="mx-auto lg:flex hidden z-[180] relative -translate-y-1/2 space-x-5  justify-center">
-                <ImageLink img="https://www.azuki.com/beannames/toshi.png" character="toshi" selected={selectedIndex == 0} click={() => scrollTo(0)} />
-                <ImageLink img="https://www.azuki.com/beannames/gus.png" character="gus" selected={selectedIndex == 1} click={() => scrollTo(1)} />
-                <ImageLink img="https://www.azuki.com/beannames/tao.png" character="tao" selected={selectedIndex == 2} click={() => scrollTo(2)} />
-                <ImageLink img="https://www.azuki.com/beannames/link.png" character="link" selected={selectedIndex == 3} click={() => scrollTo(3)} />
-                <ImageLink img="https://www.azuki.com/beannames/johnny.png" character="johnny G." selected={selectedIndex == 4} click={() => scrollTo(4)} />
-                <ImageLink img="https://www.azuki.com/beannames/penny.png" character="penny" selected={selectedIndex == 5} click={() => scrollTo(5)} />
-                <ImageLink img="https://www.azuki.com/beannames/ash.png" character="ash" selected={selectedIndex == 6} click={() => scrollTo(6)} />
-                <ImageLink img="https://www.azuki.com/beannames/pip.png" character="pip" selected={selectedIndex == 7} click={() => scrollTo(7)} />
-                <ImageLink img="https://www.azuki.com/beannames/ed.png" character="ed" selected={selectedIndex == 8} click={() => scrollTo(8)} />
-                <ImageLink img="https://www.azuki.com/beannames/frida.png" character="frida" selected={selectedIndex == 9} click={() => scrollTo(9)} />
-                <ImageLink img="https://www.azuki.com/beannames/sun.png" character="sun" selected={selectedIndex == 10} click={() => scrollTo(10)} />
-                <ImageLink img="https://www.azuki.com/beannames/kami.png" character="kami" selected={selectedIndex == 11} click={() => scrollTo(11)} />
-            </ul>
         </>
     )
 }
@@ -226,9 +228,7 @@ function beanz() {
                     </div>
                 </div>
                 <div id="section3" className="panelbeanz overflow-y-clip lg:sticky flex items-center lg:overflow-y-clip h-screen w-full" style={{ visibility: (viewObjectIndex == 3 ? "inherit" : "hidden"), opacity: (viewObjectIndex == 3 ? "1" : "0"), transform: viewObject[viewObjectIndex].section3_translate }}>
-                    <div className="duration-300">
-                        <EmblaCarousel />
-                    </div>
+                    <EmblaCarousel />
                 </div>
             </div>
             <div className={"w-full fade-in h-screen hidden lg:block fixed duration-1000 items-center z-[-10] " + viewObject[viewObjectIndex].color + " top-0 left-0"}>
