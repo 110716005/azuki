@@ -33,6 +33,7 @@ module.exports = {
       widest: '.2em',
     },
     extend: {
+      
       maxWidth:{
         'xl': '36rem',
         '2xl': '42rem',
