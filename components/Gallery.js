@@ -149,8 +149,8 @@ function Gallery() {
             }
           </div>
         </div>
-        <p className="p-2 uppercase lg:text-xs text-center text-2xs font-bold opacity-60">VERIFIED SMART CONTRACT ADDRESS: 0x025C6da5BD0e6A5dd1350fda9e3B6a614B205a1F</p>
-        <div className="bg-olive bg-opacity-50 lg:w-6/12 w-full text-sm lg:text-md px-4 py-5 rounded-md mb-3">
+        
+        <div className="bg-olive bg-opacity-50 lg:w-6/12 w-full text-sm lg:text-md px-4 py-5 rounded-md mb-3 mt-3">
           <p className="font-mono leading-5 font-bold opacity-60">100 million tokens (24.2% of the Ecosystem Fund and 15% of the total supply of BeanCoin) <span className="highlight">are claimable by Azuki NFT holders</span> upon launch of BeanCoin.
             To ensure a fair launch of BeanCoin to Azuki and Beanz NFT holders, the allocation is informed by the difference in floor price between each collection of NFTs, roughly the month prior to the token claim launch.
           </p>
