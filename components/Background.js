@@ -6,7 +6,7 @@ function Background() {
             <video className="w-full transform h-screen object-cover z-10 hidden lg:block" loop
                 autoPlay
                 muted>
-                <source src="https://www.azuki.com/beanzvideo.mp4" type="video/mp4" />
+                <source src="https://azuki-website.s3.us-west-1.amazonaws.com/beanz2.mp4" type="video/mp4" />
             </video>
             <img class="w-full bg-olive lg:hidden bottom-0 transform h-screen object-cover  object-center overlay-item -z-10" src="https://www.azuki.com/mobilemeep2.jpg"/>
             <div className="fixed h-24 bottom-0 left-0 w-full">
